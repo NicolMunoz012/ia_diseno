@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Starbucks Clone Landing Page</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-config">
+    /* Custom tailwind extensions */
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sb-dark': '#0a1d15',
+            'sb-green': '#00704A',
+            'sb-bright': '#00c853',
+            'sb-gray': '#d4e9e2',
+            'sb-accent': '#1e3932'
+          },
+          fontFamily: {
+            'sans': ['Helvetica Neue', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </style>
+<style data-purpose="typography">
+    .vertical-text {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+    .rotated-ticker {
+      transform: rotate(-2deg);
+    }
+    .watermark-text {
+      font-size: 120px;
+      opacity: 0.05;
+      letter-spacing: 0.1em;
+      pointer-events: none;
+    }
+  </style>
+<style data-purpose="layout">
+    body {
+      background-color: #0a1d15;
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .section-full {
+      width: 100%;
+      position: relative;
+    }
+    .product-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+    }
+    .floating-bean {
+      position: absolute;
+      width: 30px;
+      height: auto;
+      z-index: 10;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body class="font-sans">
+<!-- BEGIN: Navbar -->
+<header class="section-full flex items-center justify-between px-4 py-4 sticky top-0 z-50 bg-transparent" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+<div class="max-w-6xl mx-auto w-full flex items-center justify-between px-6">
+<!-- Logo (Outside Pill) -->
+<div class="flex-shrink-0">
+<img alt="Starbucks Logo" class="rounded-full w-12 h-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ5NXkNWkgaeKiubeI3O__4fr9nTOQSvRphfU1O9OIneMWYk0Y0oeNeOb4CJDEgIw6QHiYuRvrS1CslxdQZXJ23VNFLrtaTpz_OP1j3pFc-cov_YN0b8Mz4SRp_MlTuTXOPh7mFVYqT2V-r-whnl4-kzsSqCl84lTPhkGAYrA3ZBrx2XW6YQz0qSh9PLdjXzCj6qM9W12CktV2zy0BbfHPOI81TVuHyXaiMmaPQP0T4AtnUq0ZSg-7eMPS8_K8ZOPBJnltzeyqPXM"/>
+</div>
+<!-- Centered Pill/Capsule -->
+<nav class="flex bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-2 py-2 gap-2 text-xs font-medium items-center">
+<a class="bg-sb-green text-white px-8 py-2.5 rounded-full" href="#">Home</a>
+<a class="text-white px-6 py-2.5 hover:text-sb-bright transition-colors" href="#">Menu</a>
+<a class="text-white px-6 py-2.5 hover:text-sb-bright transition-colors" href="#">Rewards</a>
+<a class="text-white px-6 py-2.5 hover:text-sb-bright transition-colors" href="#">Gift Cards</a>
+</nav>
+<!-- Profile & Cart (Outside Pill) -->
+<div class="flex items-center gap-6">
+<div class="text-white/70 hover:text-white cursor-pointer">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="w-10 h-10 rounded-full bg-sb-green flex items-center justify-center text-white cursor-pointer shadow-lg hover:bg-sb-bright transition-colors">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+</header>
+<!-- END: Navbar -->
+<!-- BEGIN: Hero Section -->
+<section class="section-full py-10 overflow-hidden">
+<img alt="bean" class="floating-bean top-10 left-1/2 rotate-12" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJLGIqaspdzZwN0P8o39TAaXLHt2CUDZJn4K8DZSLyfi8Tu6FIoXqwSrPS-UNugsMoCfM1XZ2MM6vzjbVA0XPs3afC5TtW6vTxvsyY7mVRQ2zBMwFVo2pemcNL7GQBRCN9-_xIZOqRkgCqYopPtsK_q-q3Ei1lsqRSZ7Io_TCN9bL18Llx9wtLPmYnhw3gqN90YzFaGMIqwN-V2eUNl37_6AFAwP3sTIsGPPjXRpGhUBhATlBqFb6jtGKUb4kw3s_xCoGHMqhYJuk"/>
+<img alt="bean" class="floating-bean top-60 left-10 -rotate-45" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1SIeHoAVkiABoyReCUS5_EPxGPBuHVYDePImYZxEmUIOnlMpAfWVAAH_pZCiFXnkKiwy1ko7pPwtfDo8jMml4YzscEQH2oAoMmX5CsIPnZkn8Fug6VPf5V8Gx3CsPlHiHNceS_5yLg4XPD6v-DAkZqte4C-lIAXPxXl4A5H2TLj-DhRdNGMFSU0ALguY4pG3Dkr5uYF6-dkfMTN7MJILdhCHUnbsZ3eSjS-ITB_iJNHuCTeMVUA1DzqIMqKoJVHsCgNiamztBKVI"/>
+<div class="flex flex-col md:flex-row items-center">
+<div class="w-full md:w-1/2 z-20">
+<p class="text-sb-bright text-xs font-bold tracking-widest mb-2" style="font-variant: small-caps; font-weight: 300; color: white;">WHERE EVERY CUP TELLS A STORY.</p>
+<h1 class="text-5xl font-bold mb-6">WHAT'S <span class="italic" style="color: #C8E600;">YOURS?</span></h1>
+<div class="max-w-xs mb-8">
+<h2 class="text-sb-bright font-bold mb-2">FRAPUCCINO COFFEE DELIGHT</h2>
+<p class="text-gray-400 text-xs leading-relaxed">
+            Indulge in the perfect blend of coffee and ice — the Frappuccino is your cool coffee escape. Elevate your coffee moment with a creamy, icy Frappuccino delight.
+          </p>
+</div>
+<div class="flex items-center gap-4 mb-8">
+<div class="text-sb-bright font-bold text-2xl">BEST RATING <span class="ml-2 text-4xl font-black" style="color: #C8E600;">$8.6</span></div>
+<button class="border border-white text-white px-6 py-2 rounded-full text-xs font-bold bg-transparent hover:bg-white hover:text-sb-dark transition-colors">ADD TO CART</button>
+</div>
+<div class="flex gap-4 p-2 bg-[#0d3321] rounded-2xl w-fit"><div class="w-12 h-12 bg-sb-green rounded-full flex items-center justify-center p-1 border-2 border-white shadow-[0_0_10px_rgba(255,255,255,0.5)]">
+<img alt="Variant 1" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<div class="w-12 h-12 bg-sb-accent rounded-full flex items-center justify-center p-1 opacity-60">
+<img alt="Variant 2" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<div class="w-12 h-12 bg-sb-accent rounded-full flex items-center justify-center p-1 opacity-60">
+<img alt="Variant 3" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div></div>
+</div>
+<!-- Hero Product Feature -->
+<div class="relative w-full md:w-1/2 flex justify-center items-center mt-12 md:mt-0">
+<div class="absolute right-0 w-3/4 h-full bg-[#1B5E35] rounded-l-[100px] z-0"></div>
+<div class="absolute right-4 vertical-text h-full flex items-center z-20">
+<span class="text-white text-6xl font-black select-none tracking-tighter">FRAPUCCINO</span>
+</div>
+<div class="relative z-10">
+<img alt="Featured Frappuccino" class="w-80 relative z-10 drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Menu Tabs & Carousel -->
+<section class="section-full bg-[#0d3321] py-12 px-6">
+<!-- Tabs -->
+<div class="flex justify-between items-center mb-10 overflow-x-auto gap-4">
+<a class="px-8 py-2 bg-white text-sb-dark rounded-full text-sm font-bold whitespace-nowrap" href="#">DRINKS</a>
+<a class="px-8 py-2 border border-gray-600 rounded-full text-sm font-bold whitespace-nowrap" href="#">FOOD</a>
+<a class="px-8 py-2 border border-gray-600 rounded-full text-sm font-bold whitespace-nowrap" href="#">AT HOME</a>
+<a class="px-8 py-2 border border-gray-600 rounded-full text-sm font-bold whitespace-nowrap" href="#">MERCHANDISE</a>
+</div>
+<!-- Product Grid/Carousel -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+<!-- Nav Arrows (Mobile context) -->
+<button class="absolute left-[-20px] top-1/2 -translate-y-1/2 w-10 h-10 bg-sb-accent rounded-full flex items-center justify-center z-10 border border-gray-700">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="absolute right-[-20px] top-1/2 -translate-y-1/2 w-10 h-10 bg-sb-accent rounded-full flex items-center justify-center z-10 border border-gray-700">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<!-- Card 1 -->
+<div class="product-card p-4 flex flex-col items-center">
+<div class="bg-sb-green/20 rounded-full p-4 mb-4">
+<img alt="Caramel Latte" class="w-24 h-32 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<h3 class="font-bold text-sm mb-4">CARAMEL LATTE</h3>
+<div class="w-full space-y-2 mb-6">
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">MILK</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">CREAM</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">TOPPINGS</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+</div>
+<button class="w-full bg-sb-green py-2 rounded-md text-[10px] font-bold">ADD TO CART</button>
+</div>
+<!-- Card 2 - Featured -->
+<div class="product-card p-4 flex flex-col items-center scale-105 border-2 border-sb-bright bg-[#1a4a35]">
+<div class="bg-sb-green rounded-2xl p-4 mb-4 -mt-8 shadow-xl">
+<img alt="Mocha Frapp" class="w-28 h-36 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<h3 class="font-black text-base mb-4">MOCHA FRAPP</h3>
+<div class="w-full space-y-3 mb-6">
+<div class="flex justify-between text-xs">
+<span class="text-sb-gray font-semibold">MILK</span>
+<span class="text-sb-bright">OPTIONS ⌵</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-sb-gray font-semibold">CREAM</span>
+<span class="text-sb-bright">OPTIONS ⌵</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-sb-gray font-semibold">TOPPINGS</span>
+<span class="text-sb-bright">OPTIONS ⌵</span>
+</div>
+</div>
+<button class="w-full bg-white text-sb-dark py-2 rounded-full text-xs font-bold shadow-lg">ADD TO CART</button>
+</div>
+<!-- Card 3 -->
+<div class="product-card p-4 flex flex-col items-center">
+<div class="bg-sb-green/20 rounded-full p-4 mb-4">
+<img alt="Vanilla Bean" class="w-24 h-32 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<h3 class="font-bold text-sm mb-4">VANILLA BEAN</h3>
+<div class="w-full space-y-2 mb-6">
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">MILK</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">CREAM</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">TOPPINGS</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+</div>
+<button class="w-full bg-sb-green py-2 rounded-md text-[10px] font-bold">ADD TO CART</button>
+</div>
+<!-- Card 4 -->
+<div class="product-card p-4 flex flex-col items-center">
+<div class="bg-sb-green/20 rounded-full p-4 mb-4">
+<img alt="Hazelnut Brew" class="w-24 h-32 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<h3 class="font-bold text-sm mb-4">HAZELNUT BREW</h3>
+<div class="w-full space-y-2 mb-6">
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">MILK</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">CREAM</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-gray-400">TOPPINGS</span>
+<span class="text-sb-bright">OPTIONS</span>
+</div>
+</div>
+<button class="w-full bg-sb-green py-2 rounded-md text-[10px] font-bold">ADD TO CART</button>
+</div>
+</div>
+</section>
+<!-- END: Menu Tabs & Carousel -->
+<!-- BEGIN: Unmatched Quality & Banner -->
+<section class="section-full py-20 flex flex-col items-center justify-center overflow-hidden">
+<div class="relative text-center mb-10">
+<h2 class="text-7xl font-black tracking-tight leading-none uppercase">UNMATCHED<br/><span class="opacity-10 text-outline">QU</span> <span class="text-white">TY</span></h2>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 z-20">
+<img alt="Coffee Break" class="drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<!-- Floating Bean -->
+<img alt="bean" class="floating-bean top-0 right-[-40px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoJsJsgTU9D_JEH1hr6dX2-7dd6Ic6zYX7i4066TMQn_bNbtjwczVuqLSdhJwitgRu7NR724cgfj8fs_sbPq4hpsb-oNVNYbbcYc4nMdvUhcnamzAucLD6NNhOYKI9CkZpP4JDvlCD7OhR-Msc131_83LulzUt2tFdBuK9Yl3xkNIUi-UpyUPMaW6DV2hllKb332Eqx0GMAHhXld2eNYzQx0WWOOWF0VQW9sk9kmKI-oaJAz1xN_yBzOLK5yOvNDFn4enxiRPxtnM"/>
+</div>
+<!-- Repeating Ticker -->
+<div class="w-[120%] bg-sb-green py-4 rotated-ticker flex whitespace-nowrap overflow-hidden mt-8">
+<div class="flex gap-12 text-white font-black text-3xl animate-pulse">
+<span>STARBUCKS</span>
+<span>STARBUCKS</span>
+<span>STARBUCKS</span>
+<span>STARBUCKS</span>
+<span>STARBUCKS</span>
+<span>STARBUCKS</span>
+</div>
+</div>
+<div class="px-6 py-12 flex flex-col md:flex-row items-center justify-between w-full max-w-4xl">
+<p class="text-xs text-gray-400 max-w-[200px] text-center md:text-left mb-6 md:mb-0">At Starbucks, every sip is a journey into a world of rich, aromatic coffee perfection.</p>
+<p class="text-xs text-sb-gray max-w-[200px] text-center md:text-right italic">Starbucks redefines the coffee experience with every cup, blending quality, flavor, and comfort.</p>
+</div>
+</section>
+<!-- END: Unmatched Quality & Banner -->
+<!-- BEGIN: Popular Section -->
+<section class="section-full bg-[#071810] py-16 px-6 text-center">
+<div class="flex justify-center mb-12">
+<div class="bg-white px-8 py-2 rounded-full">
+<span class="text-sb-dark font-black tracking-widest text-sm">POPULAR</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+<!-- Item 1 -->
+<div class="flex flex-col items-center">
+<div class="relative w-40 h-40 mb-4">
+<div class="absolute inset-0 bg-sb-green rounded-full"></div>
+<img alt="Mocha Brew" class="absolute inset-0 w-full h-full object-contain p-4 z-10" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 bg-white rounded-full p-2 z-20 shadow-lg">
+<svg class="h-4 w-4 text-sb-dark" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+</div>
+<div class="bg-sb-green px-6 py-2 rounded-r-lg rounded-l-lg mb-4">
+<span class="font-bold text-xs uppercase">MOCHA BREW</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col items-center">
+<div class="bg-white p-6 rounded-t-[50px] rounded-b-xl mb-4 w-full max-w-[200px]">
+<img alt="Vanilla Latte" class="w-32 h-40 object-contain mx-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<div class="text-sb-gray font-bold text-xs mb-4 uppercase">VANILLA LATTE</div>
+<button class="bg-sb-green px-8 py-2 rounded-full text-[10px] font-bold">ADD TO CART</button>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col items-center">
+<div class="bg-white p-6 rounded-t-[50px] rounded-b-xl mb-4 w-full max-w-[200px]">
+<img alt="Vanilla Latte 2" class="w-32 h-40 object-contain mx-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhVdepnD65liArsxGkVRu_fcJ5gO6DkicA6uHeJOUXKevpyTAU0kkizG2DyTraFRGft5Lqz2xynu4_pWePvCuBufxdeEpORgSeXjBQoirtIZ4ew-eLbQuwPM5xYa78I1cN-prannHLNWAg7VtxoNO6mgi8CPqZiSR4E9WRJu9E92vFEwOMKgw_waXZ3HXYSI5HRymsgoCkVC4spdH_8zDOL9N_MmNL-r0SxtKdlsKNDLyTrIMgceg7dVIIovMyMwUDgewd5nQTZ1A"/>
+</div>
+<div class="text-sb-gray font-bold text-xs mb-4 uppercase">VANILLA LATTE</div>
+<button class="bg-sb-green px-8 py-2 rounded-full text-[10px] font-bold">ADD TO CART</button>
+</div>
+</div>
+</section>
+<!-- END: Popular Section -->
+<!-- BEGIN: Our Branches -->
+<section class="section-full py-16 px-6 bg-sb-dark flex">
+<div class="vertical-text flex flex-col justify-center items-center mr-8 border-l border-white/20 pl-4">
+<h2 class="text-2xl font-black tracking-widest text-white whitespace-nowrap">OUR BRANCHES</h2>
+</div>
+<div class="flex-grow">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Map Card 1 -->
+<div class="bg-sb-accent/40 p-1 flex rounded-lg">
+<div class="w-20 h-20 bg-gray-400 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Branch Map" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUJ12hkIxPwZmhTXsPAJ-5mqVZ32o6-gDG5Ud8HD9J4JK7zHWqbFOETxOxKKKndN3RpzxoWUfctTjFImfym8_DOIWHuxg3wGrbJb4OAoHh0tzqZ5XuFZHGfmXfa30L8-M9JjweGDY5-wM_myYDPBkQjCntkf9pjFoDppd8R4FNWeeI3gSkBZHDCLZ6ZbwySGEo4VIWR-hU0AA2Yc4820cWL-zHc8P8vFUrWNYjzhXQgGGhFxZ5i_HK_hUtZ0w71H4mNcCOcao_3zA"/>
+</div>
+<div class="p-3">
+<h4 class="text-sb-bright font-bold text-[10px]">NEW YORK</h4>
+<p class="text-[8px] text-gray-400 mt-1">1600 Pennsylvania Avenue NW, Washington, DC 20500</p>
+</div>
+</div>
+<!-- Map Card 2 -->
+<div class="bg-sb-accent/40 p-1 flex rounded-lg">
+<div class="w-20 h-20 bg-gray-400 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Branch Map" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVyPDICKzNAGrnkf6TXYM89926iZtMSXtbMlneSMq33lAVCJh0imtIdSACuJBs56MwlhiEN_lCoYx8DwRv_vX_iGzHddEOC67Oc0wRwpnwB6QlDSVwWGkrYOCg_KVukijgFHDsOH4p3CR42KIxE6DSNUHDc1C0UZeOjAJTG7ep4EyjKS8-EKkJTUYcYPiCpWARc68fBc_axCGAaTtiC9GX0fQ9Vg4v5cQQel0ENH77rwdFrTBdGGPBHOhpsXIIdtDWzR8dU-mkHMk"/>
+</div>
+<div class="p-3">
+<h4 class="text-sb-bright font-bold text-[10px]">NEW YORK</h4>
+<p class="text-[8px] text-gray-400 mt-1">1600 Pennsylvania Avenue NW, Washington, DC 20500</p>
+</div>
+</div>
+<!-- Map Card 3 -->
+<div class="bg-sb-accent/40 p-1 flex rounded-lg">
+<div class="w-20 h-20 bg-gray-400 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Branch Map" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLYwsE5YBeWEeze3bVWPYeH70H9S8k5WjDXJPBhWkcXbGeEh-abYIQ0FLKG4hlCXcrrUCca7g9ANnKQOoXsvUr7T3uw8786ubhd0kTenidlbBtrT725cnckCIqceo29RaXBg8zpr-RWyFjHV5gJ9UJZSOUPxEp8Bf_E4ZNXaRj2Pa-xBplZoEGLPOVzvd_aa5UK89wrt9w5kQMhn3dIgs__eMMAZb7K4la8MK-d1NstEJ21WHF2F97AZhjgDmLWRhOeMu7N74mOzQ"/>
+</div>
+<div class="p-3">
+<h4 class="text-sb-bright font-bold text-[10px]">NEW YORK</h4>
+<p class="text-[8px] text-gray-400 mt-1">1600 Pennsylvania Avenue NW, Washington, DC 20500</p>
+</div>
+</div>
+<!-- Map Card 4 -->
+<div class="bg-sb-accent/40 p-1 flex rounded-lg">
+<div class="w-20 h-20 bg-gray-400 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Branch Map" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZmD0PARS40mfx3hNe78rO23e5wABVt0o7HoK7p0ekHbrPRjGpjT0Dhgfoe0IrLSLcjYcs9Z0cIYjk6gvt66IkWF1JOYxt-cax11-312ZMz2eDZiQzhZSKutYq2Ojo1P2fcZQjw3KHcTN6hBgSEn1YaP-EGJ2Kw5GeHditqaXbea33EWIRqWebs84kvwodD8-3A_M6qArpErrVbqdPIK0V0WdgCqhoD0QxTBB4MhF1xA0runWrr5XD7PSVzBVPybV3ardq2DJQLGE"/>
+</div>
+<div class="p-3">
+<h4 class="text-sb-bright font-bold text-[10px]">NEW YORK</h4>
+<p class="text-[8px] text-gray-400 mt-1">1600 Pennsylvania Avenue NW, Washington, DC 20500</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-6">
+<button class="text-sb-bright text-[10px] font-bold underline">MORE</button>
+</div>
+</div>
+</section>
+<!-- END: Our Branches -->
+<!-- BEGIN: Bottom Ticker -->
+<div class="section-full bg-sb-green py-3 flex justify-around overflow-hidden whitespace-nowrap">
+<span class="font-black text-xs tracking-tighter mx-4">STARBUCKS</span>
+<span class="font-black text-xs tracking-tighter mx-4">STARBUCKS</span>
+<span class="font-black text-xs tracking-tighter mx-4">STARBUCKS</span>
+<span class="font-black text-xs tracking-tighter mx-4">STARBUCKS</span>
+<span class="font-black text-xs tracking-tighter mx-4">STARBUCKS</span>
+</div>
+<!-- END: Bottom Ticker -->
+<!-- BEGIN: Contact Section -->
+<section class="section-full bg-[#0d3321] py-16 px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Contact Form -->
+<div class="bg-white p-8 rounded-[40px]">
+<h3 class="text-sb-dark font-black mb-6">CONTACT</h3>
+<form class="space-y-4">
+<div>
+<label class="block text-sb-dark text-[10px] font-bold mb-1">NAME</label>
+<input class="w-full bg-sb-gray/30 border-none rounded-lg text-sb-dark text-xs p-3" placeholder="ENTER YOUR NAME..." type="text"/>
+</div>
+<div>
+<label class="block text-sb-dark text-[10px] font-bold mb-1">EMAIL</label>
+<input class="w-full bg-sb-gray/30 border-none rounded-lg text-sb-dark text-xs p-3" placeholder="ENTER YOUR EMAIL..." type="email"/>
+</div>
+<button class="w-full bg-sb-green text-white py-3 rounded-full text-xs font-bold mt-4">SUBMIT</button>
+</form>
+</div>
+<!-- Thank You Side -->
+<div class="flex flex-col justify-center items-center text-center">
+<h3 class="text-sb-bright text-4xl font-black mb-2">THANK YOU!</h3>
+<p class="text-sb-gray text-sm mb-12">Hang tight! We're coming your way soon!</p>
+<button class="w-16 h-16 bg-white rounded-full flex items-center justify-center hover:bg-sb-bright group transition-all">
+<svg class="h-8 w-8 text-sb-dark group-hover:text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg>
+</button>
+</div>
+</div>
+</section>
+<!-- END: Contact Section -->
+<!-- BEGIN: Footer -->
+<footer class="section-full bg-sb-dark pt-16 pb-32 px-6 relative overflow-hidden">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-6xl mx-auto z-10 relative">
+<div class="mb-10 md:mb-0">
+<img alt="Starbucks Footer Logo" class="w-20 h-20 rounded-full border-4 border-sb-accent mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEDgi8HwaR8LjQYjyLgTIcLgM-qUGNM6JZkPNWTDX1Dp_ugepLWSNYJvg2nJl6_RWT59iGZEFcEpwrGpkC6MGE2B1T-K61AOZY2w3Bi_5D3F1AiLkNibvJYZv3B4Qu4uGzbvOdmMEANCjtqaWSP6PQ6cNCkzJ6I011Q8HrsEA9ESzoqAtQ8DrAxBwmodhbecjmD_PuT9aheVWNKdagSAx6fpaHzEnfgh5J8oOi73_ZER7fn4gtW4HiYgKNl2RKhG7VXxgmIHmr5No"/>
+<p class="text-[10px] text-sb-gray max-w-[200px] leading-relaxed">
+          Beat the heat with a chilled coffee treat - the classic Frappuccino. Coffee, ice, and everything nice - that's Starbucks Frappuccino.
+        </p>
+</div>
+<div class="w-full md:w-auto">
+<h4 class="text-white font-bold text-sm mb-4">SUBSCRIBE</h4>
+<div class="flex bg-white rounded-full overflow-hidden w-full max-w-sm">
+<input class="bg-transparent border-none px-6 py-2 text-sb-dark text-xs flex-grow focus:ring-0" placeholder="ENTER YOUR EMAIL..." type="email"/>
+<button class="bg-sb-dark text-white p-2 flex items-center justify-center">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<p class="text-[8px] text-gray-500 mt-2">Join the club! Subscribe to our newsletter for exclusive updates and offers!</p>
+</div>
+</div>
+<!-- Background Watermark Text -->
+<div class="absolute bottom-0 left-0 w-full text-center watermark-text font-black select-none z-0">
+      CONTACT
+    </div>
+</footer>
+<!-- END: Footer -->
+</body></html>
